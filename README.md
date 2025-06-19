@@ -13,11 +13,11 @@
 # WikiMixQA: A Multimodal Benchmark for Question Answering over Tables and Charts
 
 <p align="center">
-  <img src="assets/wikimix_process.png" alt="Model Overview" width="500"/>
+  <img src="assets/wikimix_process.png" alt="Model Overview" width="1000"/>
 </p>
 
 <!-- [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)  -->
 
-Code an model for paper: "[WikiMixQA: A Multimodal Benchmark for Question Answering over Tables and Charts](https://arxiv.org/abs/2506.15594)" arXiv - 2025
+Code an model for paper: "[WikiMixQA: A Multimodal Benchmark for Question Answering over Tables and Charts](https://arxiv.org/abs/2506.15594)" [ACL 2025 - Findings]
 
 This repository will be updated soon!
