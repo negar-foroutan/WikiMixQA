@@ -16,13 +16,15 @@
   <img src="assets/wikimix_process.png" alt="Model Overview" width="1000"/>
 </p>
 
-<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)  -->
+
 
 Code an model for paper: "[WikiMixQA: A Multimodal Benchmark for Question Answering over Tables and Charts](https://arxiv.org/abs/2506.15594)" [ACL 2025 - Findings]
 
 
 # Data
-Please contact the authors to get access to the data (we'll release it soon!)
+- The MCQs can be found in `Annotations/wikimixQA_MCQs.json`. 
+- Questions metadata (e.g., images, tables, etc.) is available on Hugging Face: [WikiMixQA](https://huggingface.co/datasets/negar-foroutan/wikimixqa).
+- The file `Annotations/qid_to_path.tsv` maps each question ID (QID) to its corresponding metadata folder (i.e., Hugging Face dataset.)
 # Evaluation
 
 ### Blind evaluation (i.e., without any context provided)
@@ -30,7 +32,7 @@ Please contact the authors to get access to the data (we'll release it soon!)
 python scripts/evaluate_gpt.py \
     --model-name gpt-4o	 \
     --qa-type blind \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results
 ```
 
@@ -39,7 +41,7 @@ python scripts/evaluate_gpt.py \
 python scripts/evaluate_gemini.py \
     --model-name gpt-4o	 \
     --qa-type wikidoc \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results
 ```
 ### Oracle evaluation (i.e., with the two modalities)
@@ -47,7 +49,7 @@ python scripts/evaluate_gemini.py \
 python scripts/evaluate_gemini.py \
     --model-name gpt-4o	 \
     --qa-type oracle \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results
 ```
 
@@ -66,9 +68,9 @@ pip install vllm
 python scripts/evaluate_vllm.py \
     --model-name "OpenGVLab/InternVL2-2B"	 \
     --qa-type oracle \
-    --input-file Annotations/final_questions_1001.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results_1001 \
-    --qid-to-path ../final_new_2/qid_to_path.tsv \
+    --qid-to-path Annotations/qid_to_path.tsv \
     --num-gpus 8
 ```
 
@@ -81,9 +83,9 @@ We can only compute it for 2B model.
 python scripts/evaluate_vllm.py \
     --model-name "OpenGVLab/InternVL2-2B"	 \
     --qa-type wikidoc \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results \
-    --qid-to-path ../final_new_2/qid_to_path.tsv
+    --qid-to-path Annotations/qid_to_path.tsv
 ```
 
 ### Blind evaluation (i.e., without any context provided)
@@ -91,9 +93,9 @@ python scripts/evaluate_vllm.py \
 python scripts/evaluate_gemini.py \
     --model-name "OpenGVLab/InternVL2-2B"	 \
     --qa-type blind \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results \
-    --qid-to-path ../final_new_2/qid_to_path.tsv
+    --qid-to-path Annotations/qid_to_path.tsv
 ```
 
 ## Evaluation with QwenVL-2
@@ -104,9 +106,9 @@ python scripts/evaluate_gemini.py \
 python scripts/evaluate_vllm.py \
     --model-name "Qwen/Qwen2-VL-7B-Instruct"	 \
     --qa-type oracle \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results \
-    --qid-to-path ../final_new_2/qid_to_path.tsv \
+    --qid-to-path Annotations/qid_to_path.tsv \
     --num-gpus 4
 ```
 
@@ -114,9 +116,9 @@ python scripts/evaluate_vllm.py \
 python scripts/evaluate_vllm.py \
     --model-name "Qwen/Qwen2-VL-72B-Instruct"	 \
     --qa-type oracle \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results \
-    --qid-to-path ../final_new_2/qid_to_path.tsv \
+    --qid-to-path Annotations/qid_to_path.tsv \
     --num-gpus 8
 ```
 
@@ -128,9 +130,9 @@ python scripts/evaluate_vllm.py \
 python scripts/evaluate_vllm.py \
     --model-name "meta-llama/Llama-3.2-11B-Vision-Instruct"	 \
     --qa-type oracle \
-    --input-file Annotations/final_questions.json \
+    --input-file Annotations/wikimixQA_MCQs.json \
     --output-dir results \
-    --qid-to-path ../final_new_2/qid_to_path.tsv \
+    --qid-to-path Annotations/qid_to_path.tsv \
     --num-gpus 8
 ```
 
